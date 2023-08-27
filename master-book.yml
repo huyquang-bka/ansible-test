@@ -1,0 +1,10 @@
+---
+- name: Master Playbook
+  hosts: remote
+  become: yes
+
+  tasks:
+    # - import_tasks: tasks/intsall-cuda.yml
+    - import_tasks: tasks/set-hostname.yml
+    - import_tasks: tasks/install-docker.yml
+    - import_tasks: tasks/install-gitlab-runner.yml

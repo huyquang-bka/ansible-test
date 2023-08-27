@@ -1,0 +1,22 @@
+- name: Update package list
+  apt:
+    update_cache: yes
+
+- name: Upgrade packages (optional but recommended)
+  apt:
+    upgrade: safe
+
+- name: Install NVIDIA Driver
+  apt:
+    name: nvidia-driver-525
+    state: present
+
+- name: Install NVIDIA Container Toolkit
+  apt:
+    name: nvidia-container-toolkit
+    state: present
+
+- name: Restart Docker service
+  systemd:
+    name: docker
+    state: restarted

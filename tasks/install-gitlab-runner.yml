@@ -1,0 +1,9 @@
+- name: Download GitLab Runner .deb package
+  get_url:
+    url: "https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_amd64.deb"
+    dest: "/tmp/gitlab-runner_amd64.deb"
+  tags: download_package
+
+- name: Install GitLab Runner using dpkg
+  command: dpkg -i /tmp/gitlab-runner_amd64.deb
+  tags: install_package

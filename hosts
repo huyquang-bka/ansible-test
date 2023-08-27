@@ -1,0 +1,5 @@
+[remote]
+remoteserver ansible_host=54.254.153.39 ansible_user=ubuntu ansible_connection=ssh ansible_ssh_pass=1 ansible_become_pass=1
+
+[doirong]
+doirong4 ansible_host=192.168.1.197 ansible_user=prd-secur-ai04 ansible_connection=ssh ansible_ssh_pass=1 ansible_become_pass=1

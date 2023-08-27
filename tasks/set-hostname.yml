@@ -1,0 +1,18 @@
+- name: Echo hostname
+  vars:
+    hostname: "{{ server_names[inventory_hostname] }}"
+  debug:
+    msg: "{{ hostname }}"
+
+- name: Set environment variable name
+  vars:
+    hostname: "{{ server_names[inventory_hostname] }}"
+  lineinfile:
+    path: /etc/environment
+    line: "export HOSTNAME={{ hostname }}"
+    state: present
+
+- name: Echo hostname
+  command: echo "Hostname is $HOSTNAME"
+
+  

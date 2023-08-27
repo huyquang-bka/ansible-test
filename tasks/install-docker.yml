@@ -1,0 +1,38 @@
+- name: Update package repository
+  apt:
+    update_cache: yes
+  tags: update
+
+- name: Install Docker dependencies
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+  tags: docker_dependencies
+
+- name: Add Docker GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  tags: docker_key
+
+- name: Add Docker APT repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+    state: present
+  tags: docker_repository
+
+- name: Install Docker
+  apt:
+    name: docker-ce
+    state: latest
+  tags: install_docker
+
+- name: Add user to the docker group
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: yes
+  tags: add_user_to_docker
